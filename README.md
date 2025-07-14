@@ -1,16 +1,70 @@
 # LeafMosaic
 
-LeafMosaic is a demonstration pipeline that
+LeafMosaic is a lightweight, end-to-end pipeline for exploring community‐level plant classification from ecological images. It tiles a high-resolution image into small patches, extracts deep features via pretrained CNNs, projects those features with UMAP, discovers unsupervised clusters, and finally classifies each tile with a pretrained model.  The result is both unsupervised cluster outlines and supervised species predictions overlaid back on your original image.
 
-1. Tiles high-resolution ecological images.
-2. Extracts deep features with pretrained CNNs.
-3. Projects those features with 2-D and 3-D UMAP.
-4. Classifies each tile using an existing model.
+<table>
+  <tr>
+    <td align="center">
+      <strong>Clusters</strong><br>
+      <img src="data/raw/20230627_bucket34.jpeg" width="400"/>
+    </td>
+    <td align="center">
+      <strong>Clusters</strong><br>
+      <img src="data/embeddings/cluster_outline.png" width="400"/>
+    </td>
+    <td align="center">
+      <strong>Predictions</strong><br>
+      <img src="data/embeddings/prediction_overlay.png" width="400"/>
+    </td>
+  </tr>
+</table>
 
-Run the full pipeline on a single image:
 
-\`\`\`bash
-python src/run_demo.py --image data/raw/example.jpg --model models/classifier.h5
-\`\`\`
+## Table of Contents
 
-Intermediate data are saved to disk so each step can be inspected.
+1. [Features](#features)  
+2. [Prerequisites](#prerequisites)  
+3. [Installation](#installation)  
+4. [Directory Structure](#directory-structure)  
+5. [Running the Demo Pipeline](#running-the-demo-pipeline)  
+6. [Visualizing Results](#visualizing-results)  
+   - [Original Image](#original-image)  
+   - [Unsupervised Clustering Overlay](#unsupervised-clustering-overlay)  
+   - [Supervised Prediction Overlay](#supervised-prediction-overlay)  
+   - [Display in Python](#display-in-python)  
+7. [Customizing Colors & Resolution](#customizing-colors--resolution)  
+
+
+## Features
+
+- **Tiling**: break a large image into 100×100 px patches  
+- **Filtering**: discard mostly‐empty/white tiles (> 50% background)  
+- **Feature Extraction**: use DenseNet or VGG backbones (ImageNet weights)  
+- **Dimensionality Reduction**: UMAP in 2D and 3D for verification  
+- **Clustering**: HDBSCAN on 2-D embeddings to find visual groups  
+- **Classification**: Keras model predicts dominant species per tile (propriatary training set and transfer learning enabled)
+- **Overlays**: draw colored outlines for clusters **and** top predictions back onto the original image, with a clear legend  
+
+---
+
+## Prerequisites
+
+- Python 3.8+  
+- `venv`, or similar virtual-environment tool  
+- Git  
+
+---
+
+## Installation
+
+```bash
+# 1. Clone or copy LeafMosaic/
+cd LeafMosaic
+
+# 2. Create and activate venv
+python3 -m venv venv
+source venv/bin/activate
+
+# 3. Install Python dependencies
+pip install --upgrade pip
+pip install -r requirements.txt
