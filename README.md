@@ -51,7 +51,7 @@ LeafMosaic is a lightweight, end-to-end pipeline for exploring community‐level
 
 ## Installation
 
-bash
+```bash
 # 1. Clone or copy LeafMosaic/
 cd LeafMosaic
 
@@ -62,11 +62,12 @@ source venv/bin/activate
 # 3. Install Python dependencies
 pip install --upgrade pip
 pip install -r requirements.txt
-
+```
 ## Running the Demo Pipeline
 
-bash
+```bash
 python src/run_demo.py \
   --image data/raw/your_image.jpg \
   --model models/your_classifier.keras \
   --outdir data
+```
