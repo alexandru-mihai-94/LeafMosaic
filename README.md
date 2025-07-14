@@ -52,17 +52,17 @@ LeafMosaic is a lightweight, end-to-end pipeline for exploring community‐level
 ## Installation
 
 
-# 1. Clone or copy LeafMosaic/
+### 1. Clone or copy LeafMosaic/
 ```bash
 cd LeafMosaic
 ```
 
-# 2. Create and activate venv
+### 2. Create and activate venv
 ```
 python3 -m venv venv
 source venv/bin/activate
 ```
-# 3. Install Python dependencies
+### 3. Install Python dependencies
 ```
 pip install --upgrade pip
 pip install -r requirements.txt
