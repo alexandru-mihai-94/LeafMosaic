@@ -22,17 +22,11 @@ LeafMosaic is a lightweight, end-to-end pipeline for exploring community‐level
 
 ## Table of Contents
 
-1. [Features](#features)  
-2. [Prerequisites](#prerequisites)  
-3. [Installation](#installation)  
-4. [Directory Structure](#directory-structure)  
-5. [Running the Demo Pipeline](#running-the-demo-pipeline)  
-6. [Visualizing Results](#visualizing-results)  
-   - [Original Image](#original-image)  
-   - [Unsupervised Clustering Overlay](#unsupervised-clustering-overlay)  
-   - [Supervised Prediction Overlay](#supervised-prediction-overlay)  
-   - [Display in Python](#display-in-python)  
-7. [Customizing Colors & Resolution](#customizing-colors--resolution)  
+[Features](#features)  
+[Prerequisites](#prerequisites)  
+[Installation](#installation)  
+[Running the Demo Pipeline](#running-the-demo-pipeline)  
+
 
 
 ## Features
@@ -42,7 +36,7 @@ LeafMosaic is a lightweight, end-to-end pipeline for exploring community‐level
 - **Feature Extraction**: use DenseNet or VGG backbones (ImageNet weights)  
 - **Dimensionality Reduction**: UMAP in 2D and 3D for verification  
 - **Clustering**: HDBSCAN on 2-D embeddings to find visual groups  
-- **Classification**: Keras model predicts dominant species per tile (propriatary training set and transfer learning enabled)
+- **Classification**: Keras model predicts dominant species per tile (proprietary training set and transfer learning enabled)
 - **Overlays**: draw colored outlines for clusters **and** top predictions back onto the original image, with a clear legend  
 
 ---
@@ -57,7 +51,7 @@ LeafMosaic is a lightweight, end-to-end pipeline for exploring community‐level
 
 ## Installation
 
-```bash
+bash
 # 1. Clone or copy LeafMosaic/
 cd LeafMosaic
 
@@ -68,3 +62,11 @@ source venv/bin/activate
 # 3. Install Python dependencies
 pip install --upgrade pip
 pip install -r requirements.txt
+
+## Running the Demo Pipeline
+
+bash
+python src/run_demo.py \
+  --image data/raw/your_image.jpg \
+  --model models/your_classifier.keras \
+  --outdir data
