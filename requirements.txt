@@ -1,0 +1,12 @@
+numpy
+pandas
+Pillow
+opencv-python
+matplotlib
+plotly
+scikit-learn
+umap-learn
+hdbscan
+tqdm
+tensorflow
+keras
