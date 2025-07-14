@@ -44,22 +44,26 @@ LeafMosaic is a lightweight, end-to-end pipeline for exploring community‐level
 ## Prerequisites
 
 - Python 3.8+  
-- `venv`, or similar virtual-environment tool  
+- `venv`, or a similar virtual-environment tool  
 - Git  
 
 ---
 
 ## Installation
 
-```bash
+
 # 1. Clone or copy LeafMosaic/
+```bash
 cd LeafMosaic
+```
 
 # 2. Create and activate venv
+```
 python3 -m venv venv
 source venv/bin/activate
-
+```
 # 3. Install Python dependencies
+```
 pip install --upgrade pip
 pip install -r requirements.txt
 ```
