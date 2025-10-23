@@ -31,11 +31,13 @@ LeafMosaic is a lightweight, end-to-end pipeline for exploring community‐level
 
 ## Features
 
-- **Tiling**: break a large image into 100×100 px patches  
-- **Filtering**: discard mostly‐empty/white tiles (> 50% background)  
-- **Feature Extraction**: use DenseNet or VGG backbones (ImageNet weights)  
-- **Dimensionality Reduction**: UMAP in 2D and 3D for verification  
-- **Clustering**: HDBSCAN on 2-D embeddings to find visual groups  
+- **Tiling**: break a large image into 100×100 px patches
+- **Filtering**: discard mostly‐empty/white tiles (> 50% background)
+- **Feature Extraction**:
+  - CNN-based: use DenseNet or VGG backbones (ImageNet weights)
+  - SVD-based: lightweight Singular Value Decomposition for fast feature extraction
+- **Dimensionality Reduction**: UMAP in 2D and 3D for verification
+- **Clustering**: HDBSCAN on 2-D embeddings to find visual groups
 - **Classification**: Keras model predicts dominant species per tile (proprietary training set and transfer learning enabled)
 - **Overlays**: draw colored outlines for clusters **and** top predictions back onto the original image, with a clear legend  
 
@@ -69,9 +71,46 @@ pip install -r requirements.txt
 ```
 ## Running the Demo Pipeline
 
+### CNN-based Feature Extraction (DenseNet/VGG)
+
 ```bash
 python src/run_demo.py \
   --image data/raw/your_image.jpg \
   --model models/your_classifier.keras \
-  --outdir data
+  --outdir data \
+  --backbone densenet  # or vgg
 ```
+
+### SVD-based Feature Extraction (Lightweight)
+
+For faster processing with lower memory requirements:
+
+```bash
+python src/run_demo_svd.py \
+  --image data/raw/your_image.jpg \
+  --model models/your_classifier.keras \
+  --outdir data_svd \
+  --n_components 100  # number of SVD components per channel
+```
+
+## Comparison: CNN vs SVD Features
+
+Both approaches generate UMAP embeddings with tile visualizations. Below is a comparison using the same input image:
+
+<table>
+  <tr>
+    <td align="center" colspan="2">
+      <strong>UMAP 2D Embeddings with Tile Thumbnails</strong>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <strong>CNN Features (DenseNet)</strong><br>
+      <img src="data/embeddings/umap2d_tiles.png" width="400"/>
+    </td>
+    <td align="center">
+      <strong>SVD Features</strong><br>
+      <img src="data_svd/embeddings/umap2d_tiles.png" width="400"/>
+    </td>
+  </tr>
+</table>
