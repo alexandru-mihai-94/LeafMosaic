@@ -5,5 +5,8 @@ __pycache__/
 # Large or generated data
 /data/
 
+# Exclude tiles from data_svd
+/data_svd/tiles/
+
 # Trained models
 /models/
