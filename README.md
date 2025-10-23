@@ -19,6 +19,27 @@ LeafMosaic is a lightweight, end-to-end pipeline for exploring community‐level
   </tr>
 </table>
 
+## Comparison: CNN vs SVD Features
+
+Both approaches generate UMAP embeddings with tile visualizations. Below is a comparison using the same input image:
+
+<table>
+  <tr>
+    <td align="center" colspan="2">
+      <strong>UMAP 2D Embeddings with Tile Thumbnails</strong>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <strong>CNN Features (DenseNet)</strong><br>
+      <img src="data/embeddings/umap2d_tiles.png" width="400"/>
+    </td>
+    <td align="center">
+      <strong>SVD Features</strong><br>
+      <img src="data_svd/embeddings/umap2d_tiles.png" width="400"/>
+    </td>
+  </tr>
+</table>
 
 ## Table of Contents
 
@@ -93,24 +114,4 @@ python src/run_demo_svd.py \
   --n_components 100  # number of SVD components per channel
 ```
 
-## Comparison: CNN vs SVD Features
 
-Both approaches generate UMAP embeddings with tile visualizations. Below is a comparison using the same input image:
-
-<table>
-  <tr>
-    <td align="center" colspan="2">
-      <strong>UMAP 2D Embeddings with Tile Thumbnails</strong>
-    </td>
-  </tr>
-  <tr>
-    <td align="center">
-      <strong>CNN Features (DenseNet)</strong><br>
-      <img src="data/embeddings/umap2d_tiles.png" width="400"/>
-    </td>
-    <td align="center">
-      <strong>SVD Features</strong><br>
-      <img src="data_svd/embeddings/umap2d_tiles.png" width="400"/>
-    </td>
-  </tr>
-</table>
